@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+ul {
+	align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    
+}
+#list{
+	position: fixed;
+	width: 100%;
+}
+#list a{
+	 	display:block;
+		text-align:center;
+		width:100px; /* fixed width */
+		text-decoration:none;
+	}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+.footer {
+	margin:0;
+	padding:0;
+	
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   height: 7%;
+   width: 100%;
+   background-color: black;
+   color: yellow;
+   font-size: 15px;
+   text-align: center;
+}
+a{
+	text-decoration:none;
+}
+#tab{
+	border: 1px solid green;
+	border-spacing:20px;
+	border-radius: 25px;
+}
+input[type=button] {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+</style>
+<script type="text/javascript">
+	function check(){
+		var fn=document.frm.fn.value;
+		var un=document.frm.un.value;
+		var eid=document.frm.eid.value;
+		var ps=document.frm.ps.value;
+		var rps=document.frm.rps.value;
+		var url="Register?fn="+fn+"&un="+un+"&eid="+eid+"&ps="+ps+"&rps="+rps;
+		var obj=new XMLHttpRequest();
+		obj.onreadystatechange=function(){
+			if(obj.readyState==4 && obj.status=="200")
+				{
+					document.getElementById("s").innerHTML=obj.responseText;
+					/*if(obj.responseText.equals("Password Wrong!")))
+					{
+						document.getElementById("pp").innerHTML=obj.responseText;
+					}*/
+				}
+		}
+		obj.open("POST",url,true);
+		obj.send();
+	}
+</script>
+</head>
+<body>
+<ul id="list">
+		  <li><a class="active" href="home.jsp">Home</a></li>
+		  <li><a href="discuss.jsp">Discussion</a></li>
+		  <li><a href="login.html">Login</a></li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<form name="frm" action="Register">
+	<table align="center" id="tab">
+		
+		<tr><td colspan="2" align="center"><h3>USER REGISTRATION</h3></td></tr>
+		<tr><td>Full Name: </td><td><input type="text" name="fn" id="nm" placeholder="ex. Rahul Sharma" size="30"></td>
+		<tr><td>Username: </td><td><input type="text" name="un" id="nm" placeholder="ex. rahul1234"></td>
+		<tr><td>Email Id: </td><td><input type="text" name="eid" id="nm" placeholder="ex. rahul1997@xyz.com"></td>
+		<tr><td>Password: </td><td><input type="Password" name="ps" id="nm"></td>
+		<tr><td>Repeat Password: </td><td><input type="Password" name="rps" id="nm">
+		</td>
+		
+		<tr><td colspan="2" align="center"><input type="button" value="Register" onclick="check()"></td></tr>
+		<tr><td colspan="2" align="center"><h4 id="s"></h4></td></tr>
+	</table>
+</form>
+<br><br><br><br>
+<div class="footer">
+		<p>Developed by: WebTek Developers | Copyright: 2018 | <a href="login.html" style="color: yellow">www.getSocial.com</a></p>
+	</div>
+
+</body>
+</html>
